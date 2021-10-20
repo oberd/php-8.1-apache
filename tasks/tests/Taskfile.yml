@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+    test:
+        deps: [site-root, enable-site, start-apache]
+        preconditions:
+            - sh: "curl --fail http://localhost"
+              msg: "setup does not return a 200 http response code"
+
+    site-root:
+        cmds:
+            - mkdir -p /var/www/app/public
+            - echo "<?php phpinfo(); " > /var/www/app/public/index.php
+            - chown -R www-data:www-data /var/www/app
+
+    enable-site:
+        cmds:
+            - a2ensite laravel
+            
+    start-apache:
+        cmds:
+            - service apache2 start
+
+    

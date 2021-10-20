@@ -1,0 +1,7 @@
+version: "3"
+
+tasks:
+    xdebug-host:
+        cmds:
+            - echo "" >> /usr/local/etc/php/conf.d/xdebug.ini
+            - echo "xdebug.client_host=${XDEBUG_HOST_IP:-10.254.254.254}" >> /usr/local/etc/php/conf.d/xdebug.ini

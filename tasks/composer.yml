@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+    install:
+        deps: [configure]
+        cmds:
+            - composer install --prefer-dist --no-interaction
+            - echo "$(date)" > vendor/_tmp
+        sources:
+            - composer.json
+            - composer.lock
+        generates:
+            - vendor/_tmp
+        preconditions:
+            - sh: "test -f composer.json"
+              msg: "no composer.json file found, can't install"
+    configure:
+        cmds:
+            - composer config -g github-oauth.github.com $GITHUB_OAUTH_TOKEN
+        generates:
+            - ~/.composer/auth.json
+        

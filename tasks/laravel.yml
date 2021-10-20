@@ -1,0 +1,19 @@
+version: "3"
+
+tasks:
+    migrate:
+        cmds:
+            - php artisan migrate --force
+        preconditions:
+            - sh: "test -f artisan"
+              msg: "artisan is not present, is this a laravel project?"
+    routes:
+        cmds:
+            - php artisan route:cache
+        preconditions:
+            - sh: "test -f artisan"
+              msg: "artisan is not present, is this a laravel project?"
+    permissions:
+        cmds:
+            - chown -R www-data storage
+            - chown -R www-data bootstrap/cache

@@ -1,0 +1,12 @@
+app:
+  build:
+    image: oberd/php-8.1-apache
+    dockerfile: Dockerfile
+
+dockercfg-generator:
+  image: oberd/aws-ecr-dockercfg-generator
+  add_docker: true
+  environment:
+    ECR_PUBLIC: "true"
+  encrypted_env_file:
+    - codeship-environment.encrypted

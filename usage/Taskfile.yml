@@ -1,0 +1,22 @@
+version: "3"
+
+includes:
+    laravel: /usr/local/tasks/laravel.yml
+    composer: /usr/local/tasks/composer.yml
+    php: /usr/local/tasks/php.yml
+    apache: /usr/local/tasks/apache.yml
+
+tasks:
+    prod:
+        cmds:
+            - task: laravel:migrate
+            - task: laravel:routes
+            - task: apache:start
+
+    dev:
+        cmds:
+            - task: composer:install
+            - task: php:xdebug-host
+            - task: laravel:permissions
+            - task: laravel:migrate
+            - task: apache:start
