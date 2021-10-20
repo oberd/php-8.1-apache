@@ -1,15 +1,15 @@
 
-[Docker Hub](https://hub.docker.com/repository/docker/oberd/php-8.0-apache)
+[Docker Hub](https://hub.docker.com/repository/docker/oberd/php-8.1-apache)
 
-[ECR](https://gallery.ecr.aws/v6d3r0a9/php-8.0-apache)
+[ECR](https://gallery.ecr.aws/v6d3r0a9/php-8.1-apache)
 
 
-## PHP 8.0 Apache Base Image
+## PHP 8.1 Apache Base Image
 
 This base image contains some helper functionality to get a basic PHP project up and running. It utilizes [Task](https://taskfile.dev/) and contains some basic tasks to perform common functionality.
 
 ### Pre-installed PHP Extensions
-The following PHP extensions are installed into this base image by default. You can view the modules by running `docker run oberd/php-8.0-apache php -m`
+The following PHP extensions are installed into this base image by default. You can view the modules by running `docker run oberd/php-8.1-apache php -m`
 
 To include additional extensions, follow the steps from the [official PHP base image documentation](https://hub.docker.com/_/php). _Although, You should consider if the extension should be added to the base image or your project specific Dockerfile._
 
