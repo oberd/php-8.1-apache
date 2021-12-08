@@ -1,4 +1,4 @@
-FROM php:8.1.0RC4-apache
+FROM php:8.1.0-apache
 
 #php setup, install extensions, setup configs
 RUN apt-get update && apt-get install --no-install-recommends -y \
