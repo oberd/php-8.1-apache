@@ -1,5 +1,5 @@
 #!/bin/sh
 
-pecl install xdebug-3.0.2
+pecl install xdebug-3.1.2
 docker-php-ext-enable xdebug
 mv /usr/local/etc/php/conf.d/xdebug.ini.disabled /usr/local/etc/php/conf.d/xdebug.ini
