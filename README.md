@@ -115,6 +115,10 @@ This task will configure the Xdebug remote host into the Xdebug config.
 
 **Optional:** the environment variable `XDEBUG_HOST_IP` can be set. Else, it will default to `10.254.254.254`
 
+By default, xdebug is configured to log to `/var/log/xdebug.log` in order to supress
+xdebug connection warning messages without requiring trigger. If you feel the need to
+view xdebug specific logs, please see that file!
+
 ### Sites
 
 Using the built in Apache commands `a2ensite` and `a2dissite` to enable and disable site configurations, this base image contains pre-defined configurations for some standard PHP frameworks.

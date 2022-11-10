@@ -1,4 +1,4 @@
-FROM test/php7 as build
+FROM oberd/php-8.1-apache as build
 
 RUN echo "ServerName test-name" > /etc/apache2/conf-available/server-name.conf && a2enconf server-name.conf
 RUN a2ensite laravel
