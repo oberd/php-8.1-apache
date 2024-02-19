@@ -28,7 +28,7 @@ COPY php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini.disabled
 #apache setup, disable all sites, enable mods, enable configs
 COPY apache/disable-elb-healthcheck-log.conf /etc/apache2/conf-available/
 
-RUN a2enmod rewrite setenvif \
+RUN a2enmod rewrite setenvif headers \
     && a2enconf disable-elb-healthcheck-log \ 
     && a2dissite * \
     && a2disconf other-vhosts-access-log
@@ -48,6 +48,9 @@ RUN chmod +x /usr/local/bin/enable-xdebug \
 COPY tasks/ /usr/local/tasks/
 
 #setup task, for running Taskfiles
-RUN curl -sL https://taskfile.dev/install.sh | BINDIR=/usr/local/bin sh
+RUN curl -o /tmp/taskfile.tar.gz 'https://oberd-static-media.s3.amazonaws.com/builddeps/task/3.34.1/task_linux_386.tar.gz' \
+    && tar -xzf /tmp/taskfile.tar.gz -C /tmp \
+    && mv /tmp/task /usr/local/bin/task \
+    && chmod +x /usr/local/bin/task
 
 CMD ["apache2-foreground"]
